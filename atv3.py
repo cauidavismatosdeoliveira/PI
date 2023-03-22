@@ -24,20 +24,23 @@ capture = cv2.VideoCapture("IFMA Campus Caxias.mp4")
 if not capture.isOpened():
     print("Erro ao acessar o vídeo")
 else:
+    
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    newvideo = cv2.VideoWriter('newvideo.mp4',fourcc, 20.0, (640,480))
     while capture.isOpened():
         ret, frame = capture.read()
         if ret is True:
 
-            video =  frame
+            
             cv2.setMouseCallback("logo IF",click)
             for i in range(len(points)):
                 cv2.circle(frame, points[i], 3,COLORS[c],-1)
-           
-            cv2.imshow('logo IF', video)
-            
+            newvideo.write(frame)
+            cv2.imshow('logo IF', frame)
+          
             k=cv2.waitKey(20)
             if cv2.waitKey(20) & 0xFF == ord('q'):
-                cv2.imwrite('newvideo.mp4',video)
+                
                 break
             if cv2.waitKey(20) & 0xFF == ord('c'):
                 c=randint(0,len(COLORS)-1)
@@ -46,4 +49,5 @@ else:
         else: break
 
 capture.release()
+newvideo.release()
 cv2.destroyAllWindows()
