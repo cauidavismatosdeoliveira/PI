@@ -6,7 +6,6 @@ GREEN = (0, 255, 0)
 RED = (0, 0, 255)
 BLACK = (0, 0, 0)
 GRAY = (125, 125, 125)
-point = (0,0)
 points = []
 c=0
 COLORS=[BLUE,GREEN,RED,BLACK,GRAY]
