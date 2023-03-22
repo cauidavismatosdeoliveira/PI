@@ -7,18 +7,16 @@ RED = (0, 0, 255)
 BLACK = (0, 0, 0)
 GRAY = (125, 125, 125)
 point = (0,0)
+points = []
 c=0
 COLORS=[BLUE,GREEN,RED,BLACK,GRAY]
 
-def draw_circle(event,x,y,flags,param):
-    if event == cv2.EVENT_LBUTTONDOWN:
-        c=randint(0,len(COLORS)-1)
-        cv2.circle(frame,(x,y),3,COLORS[c],-1)
+
        
 def click(event, x, y, flags, param):
   global point, pressed
   if event == cv2.EVENT_LBUTTONDOWN:
-    point = (x,y)
+    points.append((x,y))
     
 capture = cv2.VideoCapture("IFMA Campus Caxias.mp4")
 
@@ -33,16 +31,19 @@ else:
 
             video =  frame
             cv2.setMouseCallback("logo IF",click)
-            
-            cv2.circle(frame, point, 3,COLORS[c],-1)
+            for i in range(len(points)):
+                cv2.circle(frame, points[i], 3,COLORS[c],-1)
+           
             cv2.imshow('logo IF', video)
             
+            k=cv2.waitKey(20)
             if cv2.waitKey(20) & 0xFF == ord('q'):
                 cv2.imwrite('newvideo.mp4',video)
                 break
             if cv2.waitKey(20) & 0xFF == ord('c'):
                 c=randint(0,len(COLORS)-1)
-               
+            if k == 32:
+                points.clear()
         else: break
 
 capture.release()
