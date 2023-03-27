@@ -20,13 +20,15 @@ def click(event, x, y, flags, param):
 capture = cv2.VideoCapture("IFMA Campus Caxias.mp4")
 
 
-
+cv2.namedWindow('Logo IF')
 if not capture.isOpened():
     print("Erro ao acessar o vídeo")
 else:
-    
+    frame_width = capture.get(cv2.CAP_PROP_FRAME_WIDTH)
+    frame_height = capture.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    fps = capture.get(cv2.CAP_PROP_FPS)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    newvideo = cv2.VideoWriter('newvideo.mp4',fourcc, 20.0, (640,480))
+    newvideo = cv2.VideoWriter('newvideo.mp4',fourcc, int(fps), (int(frame_width), int(frame_height)))
     while capture.isOpened():
         ret, frame = capture.read()
         if ret is True:
@@ -39,10 +41,9 @@ else:
             cv2.imshow('logo IF', frame)
           
             k=cv2.waitKey(20)
-            if cv2.waitKey(20) & 0xFF == ord('q'):
-                
+            if k == ord('q'):
                 break
-            if cv2.waitKey(20) & 0xFF == ord('c'):
+            if k == ord('c'):
                 c=randint(0,len(COLORS)-1)
             if k == 32:
                 points.clear()
