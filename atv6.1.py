@@ -22,6 +22,8 @@ while(True):
     cv2.circle(rotacionado, pointc, 3,BLUE,-1)
     cv2.imshow("atv6.1", rotacionado)
     
+    if angle > 360: angle = 0
+    
     k=cv2.waitKey(20)
     
     if k == ord('r'):
