@@ -3,9 +3,11 @@ BLUE = (255, 0, 0)
 angle= 0
 pointc = (0,0)
 rotated = 0
+width = 0
+height = 0
 
 image = cv2.imread('ifma-caxias.jpg')
-
+height, width = image.shape[:2]
 def click(event, x, y, flags, param):
   global pointc
   if event == cv2.EVENT_LBUTTONDOWN:
@@ -18,7 +20,7 @@ cv2.imshow('atv6.1',image)
 while(True): 
     
     rotation = cv2.getRotationMatrix2D(pointc, angle, 1.0)
-    rotated = cv2.warpAffine(image, rotation, (700, 517))
+    rotated = cv2.warpAffine(image, rotation, (width, height))
     cv2.circle(rotated, pointc, 3,BLUE,-1)
     cv2.imshow("atv6.1", rotated)
     
