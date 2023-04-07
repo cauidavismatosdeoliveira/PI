@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 angle = 0
 def rotate_direct(image, angle):
-    # Cálculo das dimensões da nova imagem
+    # # Calculando as dimensões da nova imagem
     height, width = image.shape[:2]
     center_x, center_y = width/2, height/2
     radians = math.radians(angle)
@@ -25,7 +25,7 @@ def rotate_direct(image, angle):
 
 
 def rotate_inverse(image, angle):
-    # Cálculo das dimensões da nova imagem
+    # Calculando as dimensões da nova imagem
     height, width = image.shape[:2]
     center_x, center_y = width/2, height/2
     radians = math.radians(angle)

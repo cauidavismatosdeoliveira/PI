@@ -1,8 +1,8 @@
 import cv2
 BLUE = (255, 0, 0)
-angulo= 0
+angle= 0
 pointc = (0,0)
-rotacionado = 0
+rotated = 0
 
 image = cv2.imread('ifma-caxias.jpg')
 
@@ -17,19 +17,19 @@ cv2.imshow('atv6.1',image)
 
 while(True): 
     
-    rotacao = cv2.getRotationMatrix2D(pointc, angulo, 1.0)
-    rotacionado = cv2.warpAffine(image, rotacao, (700, 517))
-    cv2.circle(rotacionado, pointc, 3,BLUE,-1)
-    cv2.imshow("atv6.1", rotacionado)
+    rotation = cv2.getRotationMatrix2D(pointc, angle, 1.0)
+    rotated = cv2.warpAffine(image, rotation, (700, 517))
+    cv2.circle(rotated, pointc, 3,BLUE,-1)
+    cv2.imshow("atv6.1", rotated)
     
     if angle > 360: angle = 0
     
     k=cv2.waitKey(20)
     
     if k == ord('r'):
-        angulo = angulo + 10
+        angle = angle + 10
     if k == ord('l'):
-        angulo = 0
+        angle = 0
         pointc = (0,0)
     if k == ord('q'):
         break
