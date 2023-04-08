@@ -3,14 +3,14 @@ import numpy as np
 import cv2
 angle = 0
 def rotate_direct(image, angle):
-    # # Calculando as dimensões da nova imagem
+    # Calculando as dimensões da nova imagem
     height, width = image.shape[:2]
     center_x, center_y = width/2, height/2
     radians = math.radians(angle)
     cos_theta = math.cos(radians)
     sin_theta = math.sin(radians)
 
-    # Criação da nova imagem
+    # Criando uma nova imagem
     new_image = np.zeros((height, width, 3), dtype=np.uint8)
 
     # Rotação dos pixels da imagem original na nova imagem
@@ -33,7 +33,7 @@ def rotate_inverse(image, angle):
     sin_theta = math.sin(radians)
    
 
-    # Criação da nova imagem
+    # Criando uma nova imagem
     new_image = np.zeros((height, width, 3), dtype=np.uint8)
 
     # Rotação dos pixels da nova imagem na imagem original
