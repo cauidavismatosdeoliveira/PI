@@ -19,13 +19,15 @@ else:
             
             frame2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
             ret, mask_inv = cv2.threshold(frame2gray, 125, 255, cv2.THRESH_BINARY)
+            
             mask = cv2.bitwise_not(mask_inv)
             
             frame1_bg = cv2.bitwise_and(roi,roi,mask = mask_inv)
-
+            
             frame2_fg = cv2.bitwise_and(img2,img2,mask = mask)
+            
             dst = cv2.add(frame1_bg,frame2_fg)
-
+            
             frame[0:rows, 0:cols ] = dst
 
             cv2.imshow('logo IF', frame)
