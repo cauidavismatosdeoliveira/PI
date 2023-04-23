@@ -12,8 +12,8 @@ radius = 10
 mask = np.ones_like(img)
 cy = mask.shape[0] // 2
 cx = mask.shape[1] // 2
-cv2.rectangle(mask, (0,0), (cx-20,cy*2), (255,255,255), -1)[0]
-cv2.rectangle(mask, (cx+20,0), (cx*2,cy*2), (255,255,255), -1)[0]
+cv2.rectangle(mask, (cx-45,0), (cx-20,cy*2), (255,255,255), -1)[0]
+cv2.rectangle(mask, (cx+20,0), (cx+45,cy*2), (255,255,255), -1)[0]
 mask = 255 - mask
 mask = cv2.GaussianBlur(mask, (3,3), 0)
 
