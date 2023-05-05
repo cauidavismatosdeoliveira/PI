@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
 import cv2
 
 img = cv2.imread('ifma-logo.png')
