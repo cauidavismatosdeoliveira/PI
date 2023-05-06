@@ -1,8 +1,8 @@
 import numpy as np
 import cv2
 
-img = cv2.imread('ifma-logo.png')
-mask = cv2.imread('Mask.png',0)
+img = cv2.imread('ifma-logo.jpg')
+mask = cv2.imread('Mask.jpg',0)
 cv2.imshow("imagem original",img)
 rows,cols = mask.shape
 roi = img[0:rows, 0:cols]
