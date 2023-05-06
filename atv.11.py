@@ -1,4 +1,3 @@
-# coding=utf-8
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -6,31 +5,17 @@ from matplotlib import pyplot as plt
 img = cv2.imread('atividade_aula11.png', cv2.IMREAD_GRAYSCALE)
 img = cv2.resize(img,(200,200), interpolation = cv2.INTER_CUBIC)
 
-#Img 1
-
-# k_erosion = np.ones((21,21), dtype = np.uint8)
 k_erosion = np.ones((3,3), dtype = np.uint8)
 
-# eroded = cv2.erode(img, k_erosion, anchor=(20,20))
 eroded = cv2.erode(img, k_erosion, anchor=(2,2), iterations=9)
 
-
-
-#Img 2
-
 k_erosion = np.ones((51,41), dtype = np.uint8)
-# k_erosion = np.ones((11,9), dtype = np.uint8)
 
 eroded_tmp = cv2.erode(img, k_erosion)
-# eroded_tmp = cv2.erode(img, k_erosion,iterations=5)
 
 k_dilation = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(31,31))
 
 dilated = cv2.dilate(eroded_tmp, k_dilation)
-
-
-
-#Img 3
 
 k_dilation = np.ones((9,9), dtype = np.uint8)
 
