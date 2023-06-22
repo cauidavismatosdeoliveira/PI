@@ -26,14 +26,17 @@ while True:
     classes, scores, boxes = model.detect(frame, 0.1, 0.2)
     
     end = time.time()
-    
+    people_counter = 0
     for(classid, score, box) in zip(classes, scores, boxes):
         if class_names[classid] == desired_class:
             color = COLORS[int(classid) % len(COLORS)]
             label = f"{class_names[classid]} : {score:.1%}"
             cv2.rectangle(frame, box, color, 2)
+            people_counter = len(boxes)
             cv2.putText(frame, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-                   
+        
+        cv2.putText(frame, f"Quantidade de Pessoas: {people_counter}", (0, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+               
     cv2.imshow("YOLO", frame)
     
     k = cv2.waitKey(1)
